@@ -1,0 +1,350 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  direction: rtl;
+  text-align: right;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  color: #7c795d;
+  font-size: 45px;
+  font-weight: normal;
+  margin: auto;
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: right;
+  padding: 15px;
+  margin: auto;
+  width: 50%;
+}
+
+.headerButtons {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 1%;
+}
+
+#productForm {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin: auto;
+  width: 500px;
+  text-align: right;
+  direction: rtl;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+}
+
+#productsTable {
+  margin: auto;
+  width: 500px;
+  text-align: right;
+  direction: rtl;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  border: 2px solid black;
+  margin-bottom: 30px;
+  margin-top: -10px;
+}
+
+td,
+th,
+thead {
+  text-align: center;
+  direction: rtl;
+  border: 1px solid #dddddd;
+  padding: 8px;
+}
+
+.tdListName,
+.tdListDate {
+  cursor: pointer;
+}
+
+.checkbox-col {
+  width: 20px;
+}
+
+.listName-col {
+  width: 100px;
+}
+
+.price-col {
+  width: 50px;
+}
+
+.edit-col {
+  width: 50px;
+}
+
+.cart-col {
+  width: 50px;
+}
+
+.delete-col {
+  width: 50px;
+}
+
+input[type='text'] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.cartIcon {
+  cursor: pointer;
+}
+
+.editIcon {
+  cursor: pointer;
+}
+
+.deleteIcon {
+  cursor: pointer;
+}
+
+#submitButton {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.deleteSelectedButton {
+  margin: auto;
+  margin-bottom: 20px;
+  white-space: nowrap;
+}
+
+#displayCartButton {
+  margin-left: 10px;
+}
+
+#deleteSelectedButton {
+  margin: auto;
+  margin-right: 47%;
+  margin-bottom: 20px;
+  margin-right: 10%;
+}
+
+#priceInput {
+  width: 110px;
+}
+
+#productInput {
+  width: 250px;
+}
+
+.mb-3 {
+  float: right;
+  margin-right: 10px;
+}
+
+#extraButtonsDiv {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  width: 10%;
+  direction: ltr;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.productListTr {
+  background-color: white;
+  color: #202124;
+}
+
+ul {
+  width: 300px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+li {
+  margin: auto;
+}
+
+.logo {
+  background-color: #90ee90;
+}
+
+.logoutButton {
+  margin: auto;
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.login-form {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 250px;
+  /* background-color: #90ee90; */
+  padding: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    margin: 0;
+    padding: 0;
+    direction: ltr;
+  }
+
+  .logo {
+    justify-content: center;
+    width: 100%;
+    direction: rtl;
+  }
+
+  h1 {
+    margin: auto;
+  }
+
+  #productForm {
+    width: 100%;
+    padding: 10px;
+    margin: auto;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+  }
+
+  #productsTable {
+    width: 100%;
+  }
+
+  td,
+  th,
+  thead {
+    padding: 5px;
+  }
+
+  input[type='text'] {
+    width: 100%;
+    padding: 6px;
+    margin: 6px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  #priceInput {
+    width: 90px;
+  }
+
+  #productInput {
+    width: 100px;
+  }
+
+  #submitButton {
+    width: 100%;
+    margin: 0;
+    padding: 7px;
+  }
+
+  #extraButtonsDiv {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    margin: auto;
+    right: 10px;
+    width: 10%;
+    direction: ltr;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .logoutButton {
+    margin-right: 5px;
+    margin-left: 8px;
+  }
+
+  .headerButtons {
+    margin-right: 15px;
+  }
+
+  .logo {
+    justify-content: center;
+    width: 100%;
+    direction: rtl;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .header {
+    justify-content: center;
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .header {
+    justify-content: center;
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .header {
+    justify-content: center;
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .header {
+    justify-content: center;
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  h1 {
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 412px) {
+  h1 {
+    margin: auto;
+    margin-left: 10px;
+  }
+
+  .headerButtons {
+    margin-right: 0;
+  }
+
+  #logoutButton {
+    height: 60px;
+    width: 70px;
+    padding: inherit;
+  }
+
+  #myListsButton {
+    height: 60px;
+    width: 80px;
+    padding: inherit;
+  }
+}

@@ -1,0 +1,266 @@
+* {
+  direction: rtl;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #537895;
+  position: relative;
+  min-height: 100vh;
+}
+
+header {
+  /* text-align: center; */
+  /* background-color: #333; */
+  color: #fff;
+  padding: 7px;
+}
+
+main {
+  width: 90vw;
+  margin: 0 auto;
+  padding: 8px;
+  width: 100%;
+  max-width: 630px;
+}
+
+.form-control {
+  direction: rtl;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+#product-name {
+  direction: rtl;
+}
+
+.modal {
+  direction: rtl;
+}
+
+.add-div {
+  width: 70%;
+}
+
+.logout-span {
+  height: 38px;
+  margin-top: 5px;
+  font-size: 18px;
+}
+
+table {
+  border-radius: 5px;
+  background-color: #e2d1c3;
+  padding: inherit;
+}
+
+.form-signin {
+  color: black;
+  width: 100%;
+  max-width: 630px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-control {
+  border-radius: 0.3rem;
+  direction: ltr;
+}
+
+.header-tr {
+  border-bottom: solid;
+}
+
+.list-tr {
+  border-bottom: outset;
+}
+
+.select-all {
+  width: 50px;
+}
+
+.list-name-col {
+  width: 230px;
+  padding-right: 20px;
+}
+
+.list-date-col {
+  width: 40px;
+  padding-right: 20px;
+}
+
+.amountTd {
+  display: flex;
+  justify-content: space-between;
+}
+
+.shoppingButton {
+  border: none;
+  background: none;
+}
+
+#userGreet {
+  padding-top: 3px;
+  margin-right: 20px;
+}
+
+#editProfileDiv {
+  padding-top: 3px;
+}
+
+.tdListName {
+  cursor: pointer;
+}
+
+.tdListDate {
+  cursor: pointer;
+}
+
+#logoutDiv {
+  cursor: pointer;
+  width: 20%;
+  margin: auto;
+  white-space: nowrap;
+  margin-right: 0;
+}
+
+#linkMyListsDiv {
+  cursor: pointer;
+  margin: auto;
+  white-space: nowrap;
+  margin-right: 15px;
+}
+
+footer {
+  /* text-align: center; */
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+}
+
+.flex-gap {
+  display: inline-flex;
+  flex-wrap: wrap;
+  /* flex-direction: row; */
+}
+
+#addNewListButton {
+  margin-right: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+#addNewProductButton {
+  margin-right: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+#deleteSelectedButton {
+  margin-right: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.btn {
+  background-color: #e9ecef;
+  cursor: pointer;
+}
+
+#addNewListButton {
+  border-radius: 5px;
+}
+
+#deleteSelectedButton {
+  border-radius: 5px;
+}
+
+svg {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.input-group-text {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+#list-label {
+  direction: rtl;
+}
+
+#newListNameInput {
+  direction: rtl;
+  width: 190px;
+  margin-left: 0;
+}
+
+#productInput {
+  direction: rtl;
+  width: 190px;
+  margin-left: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .list-name-col {
+    width: 90px;
+  }
+
+  svg {
+    margin-right: 20px;
+  }
+
+  #delete-icon {
+    margin-right: 10px;
+  }
+
+  .logout-span {
+    font-size: 23px;
+  }
+
+  .add-div {
+    width: 100%;
+  }
+
+  #newListNameInput {
+    direction: rtl;
+    width: 190px;
+    margin-left: 0;
+  }
+
+  #addNewListButton {
+    margin-right: 0;
+  }
+
+  #logoutDiv {
+    cursor: pointer;
+    width: 35%;
+    margin: auto;
+    margin-right: 0;
+  }
+
+  #linkMyListsDiv {
+    cursor: pointer;
+    margin: auto;
+    margin-right: 0;
+  }
+}

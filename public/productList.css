@@ -1,0 +1,56 @@
+* {
+  direction: rtl;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  background-color: #f5deb3;
+  padding: 10px 0;
+}
+
+/* Basic footer styles */
+footer {
+  position: fixed;
+
+  width: 100%;
+  height: 20px;
+  background-color: #f5deb3;
+  /* Sticky footer */
+  flex-shrink: 0;
+}
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  text-align: center;
+  flex: 1;
+  background-color: #f2f2f2;
+}
+
+form {
+  text-align: center;
+}
+
+a {
+  color: white;
+}

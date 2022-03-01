@@ -1,0 +1,454 @@
+* {
+  direction: rtl;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #537895;
+  position: relative;
+  min-height: 100vh;
+}
+
+header {
+  /* text-align: center; */
+  /* background-color: #333; */
+  color: #fff;
+  padding: 7px;
+}
+
+main {
+  margin: 0 auto;
+  padding: 8px;
+  width: 100%;
+  max-width: 670px;
+}
+
+.form-control {
+  direction: rtl;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+#product-name {
+  direction: rtl;
+}
+
+.deleteButton {
+  border: none;
+  background: none;
+}
+
+.modal {
+  direction: rtl;
+}
+
+.add-div {
+  width: 90%;
+  padding-right: 10px;
+}
+
+.logout-span {
+  height: 38px;
+  margin-top: 5px;
+  font-size: 18px;
+}
+
+#activeButton {
+  margin-right: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+#active-icon {
+  margin-right: 10px;
+}
+
+.form-signin {
+  color: black;
+  width: 100%;
+  max-width: 630px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-control {
+  border-radius: 0.3rem;
+  direction: ltr;
+}
+
+.header-tr {
+  border-bottom: solid;
+}
+
+.list-tr {
+  border-bottom: outset;
+}
+
+/* .select-all {
+  width: 50px;
+} */
+
+#logoutDiv {
+  cursor: pointer;
+  width: 20%;
+  margin: auto;
+  white-space: nowrap;
+  margin-right: 0;
+}
+
+#linkMyListsDiv {
+  cursor: pointer;
+  margin: auto;
+  white-space: nowrap;
+  margin-right: 15px;
+  padding-right: 15px;
+}
+
+footer {
+  /* text-align: center; */
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+}
+
+.flex-gap {
+  display: inline-flex;
+  flex-wrap: wrap;
+  /* flex-direction: row; */
+}
+
+#addNewListButton {
+  margin-right: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+#addNewProductButton {
+  width: 90px;
+  margin: auto;
+  margin-left: 10px;
+  margin-right: 5px;
+  /* margin-top: 5px; */
+  border-radius: 5px;
+}
+
+#deleteSelectedButton {
+  margin-right: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.btn {
+  background-color: #e9ecef;
+  cursor: pointer;
+}
+
+.deleteIcon {
+  width: 60px;
+  border: #6c757d solid 1px;
+  padding-top: 17px;
+  margin-right: 10px;
+}
+
+#add-product-to-list-icon {
+  margin-right: 10px;
+}
+
+#delete-icon {
+  margin-right: 10px;
+}
+
+.procductCheckboxTd {
+  width: 60px;
+  border: #6c757d solid 1px;
+  padding-top: 17px;
+}
+
+.productNameTd {
+  width: 60px;
+  border: #6c757d solid 1px;
+  padding-top: 17px;
+}
+
+.departmentTd {
+  width: 60px;
+  /* width: 40px; */
+  padding-right: 20px;
+  border: #6c757d solid 1px;
+  padding-top: 17px;
+}
+
+.editIcon {
+  width: 60px;
+  border: #6c757d solid 1px;
+  padding-top: 17px;
+}
+
+.procductCheckboxTd {
+  border-radius: 5px;
+  width: 60px;
+  border: #6c757d solid 1px;
+  padding-top: 17px;
+}
+
+.productNameTh {
+  width: 230px;
+  padding-right: 20px;
+  border: #6c757d solid 1px;
+  padding-top: 17px;
+}
+
+.departmentTh {
+  border: #6c757d solid 1px;
+  padding-top: 17px;
+}
+
+.editIconTh {
+  border: #6c757d solid 1px;
+  padding-top: 17px;
+}
+
+.deleteIconTh {
+  border: #6c757d solid 1px;
+  padding-top: 17px;
+}
+
+#addNewListButton {
+  border-radius: 5px;
+}
+
+#deleteSelectedButton {
+  border-radius: 5px;
+}
+
+.amountCounterTD {
+  padding: inherit !important;
+  border: #6c757d solid 1px;
+  width: 10px;
+}
+
+.plus-span {
+  margin-top: 5px;
+}
+
+.amountCounter {
+  margin-top: 5px;
+}
+
+.minus-span {
+  margin-top: 5px;
+}
+
+.minus-span {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font: 30px/1 Arial, sans-serif;
+  text-align: center;
+  border-radius: 50%;
+  background-clip: padding-box;
+}
+
+.amountCounter {
+  text-align: center;
+  border: 0;
+  width: 2%;
+  background: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.amountCounter {
+  color: #000;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  padding: 0 2px;
+  min-width: 35px;
+  text-align: center;
+}
+
+.plus-span {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font: 30px/1 Arial, sans-serif;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.plusButton {
+  width: 30px;
+  border: none;
+  background: none;
+}
+
+#plus-icons {
+  margin-right: 0px;
+}
+
+.minusButton {
+  width: 30px;
+  border: none;
+  background: none;
+}
+
+#minus-icons {
+  margin-right: 0px;
+}
+
+.productNameTd {
+  white-space: nowrap;
+  width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* .amountTh {
+  width: 130px;
+} */
+
+.amountTd {
+  margin-right: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+}
+
+svg {
+  /* margin-right: 20px; */
+  cursor: pointer;
+}
+
+.input-group-text {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.far .fa-edit {
+  margin: auto;
+}
+
+.far .fa-trash-alt {
+  margin: auto;
+}
+
+.cartIconTd {
+  width: 60px;
+  border: #6c757d solid 1px;
+  cursor: pointer;
+  padding: inherit !important;
+}
+
+.shoppingButton {
+  background: none;
+  border: none;
+}
+
+#list-label {
+  direction: rtl;
+}
+
+#newListNameInput {
+  direction: rtl;
+  width: 190px;
+  margin-left: 0;
+}
+
+#productInput {
+  direction: rtl;
+  width: 190px;
+  margin-left: 0;
+  margin: auto;
+  margin-right: 5px;
+  border-radius: 5px;
+  margin-top: 21px;
+}
+
+/* table {
+  border-radius: 5px;
+  background-color: #e2d1c3;
+  padding: inherit;
+} */
+
+#productsTable {
+  border-radius: 15px;
+  background-color: #e2d1c3;
+  padding: inherit;
+}
+
+@media only screen and (max-width: 600px) {
+  .list-name-col {
+    width: 90px;
+  }
+
+  svg {
+    margin-right: 20px;
+  }
+
+  #delete-icon {
+    margin-right: 10px;
+  }
+
+  .logout-span {
+    font-size: 23px;
+  }
+
+  .add-div {
+    width: 100%;
+  }
+
+  #newListNameInput {
+    direction: rtl;
+    width: 190px;
+    margin-left: 0;
+  }
+
+  #addNewListButton {
+    margin-right: 0;
+  }
+
+  #logoutDiv {
+    cursor: pointer;
+    width: 35%;
+    margin: auto;
+    margin-right: 0;
+  }
+
+  #linkMyListsDiv {
+    cursor: pointer;
+    margin: auto;
+    margin-right: 0;
+  }
+}

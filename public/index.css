@@ -1,0 +1,36 @@
+* {
+  direction: rtl;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.cover-container {
+  background-color: #537895;
+  /* background-image: url('./beautiful-color-gradients-backgrounds-013-heavy-rain.png'); */
+}
+
+form {
+  border-radius: 25px;
+  background-color: #e2d1c3;
+  padding: inherit;
+}
+
+.form-signin {
+  color: black;
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-control {
+  border-radius: 0.3rem;
+  direction: ltr;
+}
+
+h3 {
+  margin: auto;
+}
