@@ -26,8 +26,11 @@ let login = async (e) => {
   };
 
   try {
+    console.log(userData);
     const response = await fetch(apiUrl, options);
+    console.log(response);
     const json = await response.json();
+    console.log(json);
 
     if (json.error) {
       return json.error;

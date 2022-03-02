@@ -37,11 +37,10 @@ async function getFirstJson(apiUrl) {
       console.log(json);
       const userId = json._id;
       const userToken = json.token;
-      // localStorage.setItem('userId', userId);
-      // localStorage.setItem('userToken', userToken);
       firstNameInput.value = json.firstName;
       lastNameInput.value = json.lastName;
       emailInput.value = json.email;
+      oldPasswordInput.value = json.password;
       return json;
     }
   } catch (error) {
@@ -83,7 +82,7 @@ async function editProfile(e) {
       return json.error;
     } else {
       console.log(json);
-      // window.location = '/index.html';
+      window.location = './myLists.html';
       // const userId = json.newUser._id;
       // console.log(userId);
       // console.log(json.newUser._id);

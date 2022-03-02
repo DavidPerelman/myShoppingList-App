@@ -6,6 +6,7 @@ require('./db/mongoConnect');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
 
 // Models
 const User = require('./models/user');
@@ -25,6 +26,10 @@ app.use(cors());
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 
+const algorithm = 'aes-256-ctr';
+const secretKey = 'vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3';
+const iv = crypto.randomBytes(16);
+
 // Create new user
 app.post('/user/register', async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
@@ -36,54 +41,50 @@ app.post('/user/register', async (req, res, next) => {
       });
     }
 
-    bcrypt.hash(password, 10, (error, hash) => {
-      if (error) {
-        return res.status(500).json({ error });
-      }
+    // protected data
+    const encrypt = (text) => {
+      const cipher = crypto.createCipheriv(algorithm, secretKey, iv);
 
-      User.collection
-        .getIndexes({ full: true })
-        .then((indexes) => {
-          console.log('indexes:', indexes);
-        })
-        .catch(console.error);
+      const encrypted = Buffer.concat([cipher.update(text), cipher.final()]);
 
-      const newUser = new User({
-        firstName,
-        lastName,
-        email,
-        password: hash,
-      });
+      return {
+        iv: iv.toString('hex'),
+        content: encrypted.toString('hex'),
+      };
+    };
 
-      // Create token
-      const token = jwt.sign(
-        { user_id: newUser._id, email: email },
-        process.env.SECRET
-      );
-      // save user token
-      newUser.token = token;
+    const encryptedPassword = encrypt(password);
 
-      newUser
-        .save()
-        .then((result) => {
-          res.json({
-            status: 'success',
-            newUser,
-          });
-        })
-        .catch((error) => {
-          if (error.code === 'E11000') {
-            // it could be .status, .code etc.. not sure
-            console.log('User already exist');
+    console.log(encryptedPassword);
 
-            console.log(error.code);
-
-            return res
-              .status(500)
-              .json({ status: 'error', msg: 'User already exist.' });
-          }
-        });
+    const newUser = new User({
+      firstName,
+      lastName,
+      email,
+      password: encryptedPassword,
     });
+
+    // Create token
+    const token = jwt.sign(
+      { user_id: newUser._id, email: email },
+      process.env.SECRET
+    );
+    // save user token
+    newUser.token = token;
+
+    newUser
+      .save()
+      .then((result) => {
+        console.log(newUser);
+        return;
+        res.json({
+          status: 'success',
+          newUser,
+        });
+      })
+      .catch((error) => {
+        return res.status(500).json(error);
+      });
   });
 });
 
@@ -97,9 +98,34 @@ app.post('/user/login', async (req, res) => {
       res.status(400).send('All input is required');
     }
     // Validate if user exist in our database
+
     const user = await User.findOne({ email });
 
-    if (user && (await bcrypt.compare(password, user.password))) {
+    const decrypt = (hash) => {
+      const decipher = crypto.createDecipheriv(
+        algorithm,
+        secretKey,
+        Buffer.from(hash.iv, 'hex')
+      );
+
+      const decrpyted = Buffer.concat([
+        decipher.update(Buffer.from(hash.content, 'hex')),
+        decipher.final(),
+      ]);
+
+      return decrpyted.toString();
+    };
+
+    const userPassword = decrypt(user.password);
+
+    console.log(`userPassword: ${userPassword}`);
+    console.log(`reqPassword: ${password}`);
+
+    if (user && password === userPassword) {
+      // if (user && (await decryptedData) === password) {
+      console.log('10');
+
+      // return;
       // Create token
       const token = jwt.sign(
         { user_id: user._id, email: user.email },
@@ -112,13 +138,15 @@ app.post('/user/login', async (req, res) => {
       // save user token
       user.token = token;
 
+      console.log('check');
+
+      console.log(user);
       // user
       res.status(200).json(user);
     }
   } catch (err) {
     console.log(err);
   }
-  // Our register logic ends here
 });
 
 app.get('/users/usersData', async (req, res) => {
@@ -279,13 +307,6 @@ app.put('/list/editList', async (req, res) => {
 });
 
 app.put('/user/editProfile', async (req, res) => {
-  // const firstName = req.body.firstName;
-  // const lastName = req.body.lastName;
-  // const email = req.body.email;
-  // const oldPassword = req.body.oldPassword;
-  // const newPassword = req.body.newPassword;
-  // const userId = req.body.userId;
-
   try {
     // Get user input
     const { userId, oldPassword, firstName, lastName, email, newPassword } =
@@ -295,38 +316,92 @@ app.put('/user/editProfile', async (req, res) => {
     if (!(userId && oldPassword)) {
       res.status(400).send('userId or password missed');
     }
-    // Validate if user exist in our database
-    const user = await User.findById(userId);
 
-    if (user && (await bcrypt.compare(oldPassword, user.password))) {
-      // user
-      user.firstName = firstName;
-      user.lastName = lastName;
-      user.email = email;
-      user.password = newPassword;
+    const checkUser = await User.findOne({ email });
 
-      res.status(200).json(user);
+    const decrypt = (hash) => {
+      const decipher = crypto.createDecipheriv(
+        algorithm,
+        secretKey,
+        Buffer.from(hash.iv, 'hex')
+      );
+
+      const decrpyted = Buffer.concat([
+        decipher.update(Buffer.from(hash.content, 'hex')),
+        decipher.final(),
+      ]);
+
+      return decrpyted.toString();
+    };
+
+    const userPassword = decrypt(checkUser.password);
+
+    console.log(`userPassword: ${userPassword}`);
+    console.log(`reqPassword: ${oldPassword}`);
+
+    return;
+    if (encryptedPassword === checkUser.password) {
+      encryptedPassword;
     }
+
+    return;
+
+    // return;
+
+    const user = User.findByIdAndUpdate(
+      userId,
+      {
+        $set: {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: hash,
+        },
+      },
+      { new: true }
+    );
+
+    // Create token
+    const token = jwt.sign(
+      { user_id: user._id, email: email },
+      process.env.SECRET
+    );
+    // save user token
+    user.token = token;
+    user.save();
+
+    res
+      .json(user)
+
+      .then((result) => {
+        res.json({
+          status: 'success',
+          newUser,
+        });
+      })
+      .catch((error) => {
+        return res.status(500).json(error);
+      });
+
+    // const user = await User.findByIdAndUpdate(
+    //   userId,
+    //   {
+    //     $set: {
+    //       firstName: firstName,
+    //       lastName: lastName,
+    //       email: email,
+    //       password: newPassword,
+    //     },
+    //   },
+    //   { new: true }
+    // );
+
+    // await user.save();
+
+    // res.json(user);
   } catch (err) {
     console.log(err);
   }
-
-  // const user = await User.findByIdAndUpdate(
-  //   userId,
-  //   {
-  //     $set: {
-  //       firstName: firstName,
-  //       lastName: lastName,
-  //       email: email,
-  //       password: newPassword,
-  //     },
-  //   },
-  //   { new: true }
-  // );
-
-  // await user.save();
-
-  // res.json(user);
 });
 
 app.put('/list/activeListStart', async (req, res) => {
