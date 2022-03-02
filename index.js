@@ -76,7 +76,6 @@ app.post('/user/register', async (req, res, next) => {
       .save()
       .then((result) => {
         console.log(newUser);
-        return;
         res.json({
           status: 'success',
           newUser,
@@ -357,7 +356,6 @@ app.put('/user/editProfile', async (req, res) => {
 
       console.log(newPassword);
       console.log(encryptedPassword);
-      return;
 
       const user = await User.findByIdAndUpdate(
         userId,
@@ -372,47 +370,9 @@ app.put('/user/editProfile', async (req, res) => {
         { new: true }
       );
       await user.save();
+      console.log(user);
       res.json(user);
     }
-
-    return;
-
-    // return;
-
-    const user = User.findByIdAndUpdate(
-      userId,
-      {
-        $set: {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          password: hash,
-        },
-      },
-      { new: true }
-    );
-
-    // Create token
-    const token = jwt.sign(
-      { user_id: user._id, email: email },
-      process.env.SECRET
-    );
-    // save user token
-    user.token = token;
-    user.save();
-
-    res
-      .json(user)
-
-      .then((result) => {
-        res.json({
-          status: 'success',
-          newUser,
-        });
-      })
-      .catch((error) => {
-        return res.status(500).json(error);
-      });
   } catch (err) {
     console.log(err);
   }

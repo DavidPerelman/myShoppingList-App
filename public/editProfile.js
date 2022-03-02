@@ -11,8 +11,16 @@ let emailInput = document.getElementById('floatingEmail');
 let oldPasswordInput = document.getElementById('floatingOldPassword');
 let newPasswordInput = document.getElementById('floatingNewPassword');
 const editProfileForm = document.getElementById('editProfileForm');
+const cancelButton = document.getElementById('cancelButton');
 
 editProfileForm.addEventListener('submit', editProfile);
+
+cancelButton.addEventListener('click', goToMyListsPage);
+
+function goToMyListsPage(e) {
+  e.preventDefault();
+  window.location = '/myLists.html';
+}
 
 let dataListsPerUser;
 const apiUrl = `http://localhost:3001/users/usersData?userId=${userId}`;
@@ -40,7 +48,6 @@ async function getFirstJson(apiUrl) {
       firstNameInput.value = json.firstName;
       lastNameInput.value = json.lastName;
       emailInput.value = json.email;
-      oldPasswordInput.value = json.password;
       return json;
     }
   } catch (error) {
@@ -81,14 +88,10 @@ async function editProfile(e) {
     if (json.error) {
       return json.error;
     } else {
-      console.log(json);
+      localStorage.removeItem('firstName', firstName);
+      localStorage.setItem('firstName', json.firstName);
       window.location = './myLists.html';
-      // const userId = json.newUser._id;
-      // console.log(userId);
-      // console.log(json.newUser._id);
-      // goToLoginPage();
     }
-    // process body
   } catch (err) {
     console.log(err);
   }

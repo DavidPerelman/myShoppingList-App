@@ -39,12 +39,6 @@ const register = async (e) => {
       return json.error;
     } else {
       window.location = '/index.html';
-
-      const userId = json.newUser._id;
-      console.log(userId);
-      console.log(json.newUser._id);
-
-      // goToLoginPage();
     }
     // process body
   } catch (err) {
