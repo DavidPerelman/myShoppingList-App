@@ -445,4 +445,5 @@ function tdCartClick(e) {
 function editProfile(e) {
   e.preventDefault();
   console.log('editProfile');
+  window.location = '/editProfile.html';
 }

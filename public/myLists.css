@@ -103,6 +103,10 @@ table {
   background: none;
 }
 
+.profile-icon {
+  width: 25px;
+}
+
 #userGreet {
   padding-top: 3px;
   margin-right: 20px;
@@ -110,6 +114,8 @@ table {
 
 #editProfileDiv {
   padding-top: 3px;
+  margin-right: 15px;
+  cursor: pointer;
 }
 
 .tdListName {

@@ -283,6 +283,26 @@ app.put('/list/editList', async (req, res) => {
   res.json(list);
 });
 
+app.put('/user/editProfile', async (req, res) => {
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const email = req.body.email;
+  const email = req.body.email;
+  const listId = req.body.listId;
+  let oldPassword = oldPasswordInput.value;
+  let newPassword = newPasswordInput.value;
+
+  const list = await List.findByIdAndUpdate(
+    listId,
+    { $set: { listName: listName } },
+    { new: true }
+  );
+
+  await list.save();
+
+  res.json(list);
+});
+
 app.put('/list/activeListStart', async (req, res) => {
   const listId = req.body.listId;
 
