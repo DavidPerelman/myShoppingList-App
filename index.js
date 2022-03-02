@@ -334,14 +334,45 @@ app.put('/user/editProfile', async (req, res) => {
       return decrpyted.toString();
     };
 
+    console.log(checkUser.password);
     const userPassword = decrypt(checkUser.password);
 
     console.log(`userPassword: ${userPassword}`);
     console.log(`reqPassword: ${oldPassword}`);
 
-    return;
-    if (encryptedPassword === checkUser.password) {
-      encryptedPassword;
+    if (userPassword === oldPassword) {
+      console.log('10');
+      const encrypt = (text) => {
+        const cipher = crypto.createCipheriv(algorithm, secretKey, iv);
+
+        const encrypted = Buffer.concat([cipher.update(text), cipher.final()]);
+
+        return {
+          iv: iv.toString('hex'),
+          content: encrypted.toString('hex'),
+        };
+      };
+
+      const encryptedPassword = encrypt(newPassword);
+
+      console.log(newPassword);
+      console.log(encryptedPassword);
+      return;
+
+      const user = await User.findByIdAndUpdate(
+        userId,
+        {
+          $set: {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: encryptedPassword,
+          },
+        },
+        { new: true }
+      );
+      await user.save();
+      res.json(user);
     }
 
     return;
@@ -382,23 +413,6 @@ app.put('/user/editProfile', async (req, res) => {
       .catch((error) => {
         return res.status(500).json(error);
       });
-
-    // const user = await User.findByIdAndUpdate(
-    //   userId,
-    //   {
-    //     $set: {
-    //       firstName: firstName,
-    //       lastName: lastName,
-    //       email: email,
-    //       password: newPassword,
-    //     },
-    //   },
-    //   { new: true }
-    // );
-
-    // await user.save();
-
-    // res.json(user);
   } catch (err) {
     console.log(err);
   }
