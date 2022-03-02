@@ -29,11 +29,6 @@ app.use(express.static('public'));
 app.post('/user/register', async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
 
-  // const firstName = req.body.firstName;
-  // const lastName = req.body.lastName;
-  // const email = req.body.email;
-  // const password = req.body.password;
-
   User.find({ email }).then((users) => {
     if (users.length >= 1) {
       return res.status(409).json({
@@ -284,23 +279,54 @@ app.put('/list/editList', async (req, res) => {
 });
 
 app.put('/user/editProfile', async (req, res) => {
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
-  const email = req.body.email;
-  const email = req.body.email;
-  const listId = req.body.listId;
-  let oldPassword = oldPasswordInput.value;
-  let newPassword = newPasswordInput.value;
+  // const firstName = req.body.firstName;
+  // const lastName = req.body.lastName;
+  // const email = req.body.email;
+  // const oldPassword = req.body.oldPassword;
+  // const newPassword = req.body.newPassword;
+  // const userId = req.body.userId;
 
-  const list = await List.findByIdAndUpdate(
-    listId,
-    { $set: { listName: listName } },
-    { new: true }
-  );
+  try {
+    // Get user input
+    const { userId, oldPassword, firstName, lastName, email, newPassword } =
+      req.body;
 
-  await list.save();
+    // Validate user input
+    if (!(userId && oldPassword)) {
+      res.status(400).send('userId or password missed');
+    }
+    // Validate if user exist in our database
+    const user = await User.findById(userId);
 
-  res.json(list);
+    if (user && (await bcrypt.compare(oldPassword, user.password))) {
+      // user
+      user.firstName = firstName;
+      user.lastName = lastName;
+      user.email = email;
+      user.password = newPassword;
+
+      res.status(200).json(user);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+
+  // const user = await User.findByIdAndUpdate(
+  //   userId,
+  //   {
+  //     $set: {
+  //       firstName: firstName,
+  //       lastName: lastName,
+  //       email: email,
+  //       password: newPassword,
+  //     },
+  //   },
+  //   { new: true }
+  // );
+
+  // await user.save();
+
+  // res.json(user);
 });
 
 app.put('/list/activeListStart', async (req, res) => {

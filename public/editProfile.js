@@ -64,7 +64,7 @@ async function editProfile(e) {
   let oldPassword = oldPasswordInput.value;
   let newPassword = newPasswordInput.value;
 
-  const data = { firstName, lastName, email, oldPassword, newPassword };
+  const data = { userId, firstName, lastName, email, oldPassword, newPassword };
   const apiUrl = 'http://localhost:3001/user/editProfile';
   const options = {
     method: 'PUT',
